@@ -511,6 +511,7 @@ class SimpleBlogCommon{
 	 * Potential method for allowing users to format the header area of their blog
 	 * However, this would make it more difficult for theme developers to design for the blog plugin
 	 *
+	 * @param string $header
 	 */
 	public static function BlogHead($header,$post_index,$post,$cacheable=false){
 
@@ -607,6 +608,9 @@ class SimpleBlogCommon{
 		return str_replace('_', ' ', $str);
 	}
 
+	/**
+	 * @param string $file
+	 */
 	public static function FileData($file){
 
 		if( !file_exists($file) ){
@@ -733,6 +737,9 @@ class SimpleBlogCommon{
 		}
 	}
 
+	/**
+	 * @param string $label
+	 */
 	public static function CategoryLink( $catindex, $cattitle, $label, $query = '', $attr = '' ){
 
 		$url = 'Special_Blog_Categories';
@@ -854,6 +861,7 @@ class SimpleBlogCommon{
 	 * Get the key for a given value
 	 * Should be changed to allow for non-numeric keys
 	 *
+	 * @param string $data_string
 	 */
 	public static function AStrKey( $data_string, $value, $url_search = false ){
 		static $integers = '0123456789';
@@ -886,6 +894,7 @@ class SimpleBlogCommon{
 	/**
 	 * Remove a key-value
 	 *
+	 * @param string $data_string
 	 */
 	public static function AStrRm( $data_string, $key ){
 
@@ -894,6 +903,9 @@ class SimpleBlogCommon{
 	}
 
 
+	/**
+	 * @param string $data_string
+	 */
 	public static function AStrRmValue( $data_string, $value ){
 
 		$string =& SimpleBlogCommon::$data[$data_string];
@@ -905,6 +917,7 @@ class SimpleBlogCommon{
 	/**
 	 * Convert an AStr to an array
 	 *
+	 * @param string $data_string
 	 */
 	public static function AStrToArray( $data_string ){
 

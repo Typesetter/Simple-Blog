@@ -47,6 +47,7 @@ class AdminSimpleBlogPage extends SimpleBlogPage{
 	/**
 	 * Open/Close the comments for a blog post
 	 *
+	 * @param boolean $closed
 	 */
 	function ToggleComments($closed, $post_id ){
 		global $langmessage;

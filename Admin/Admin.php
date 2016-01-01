@@ -21,6 +21,9 @@ class SimipleBlogAdmin extends AdminSimpleBlogPage{
 
 	}
 
+	/**
+	 * @param string $current
+	 */
 	function Heading($current){
 		global $langmessage;
 

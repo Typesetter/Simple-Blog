@@ -336,6 +336,8 @@ class SimpleBlog extends SimpleBlogCommon{
 	/**
 	 * Get the edit links for the post
 	 *
+	 * @param string $class
+	 * @param string $id
 	 */
 	public static function EditLinks($post_index, &$class, &$id){
 		global $langmessage;

@@ -394,7 +394,7 @@ class AdminSimpleBlogPosts extends SimipleBlogAdmin{
 
 	/**
 	 * Save a new blog post
-	 * @return bool
+	 * @return false|null
 	 *
 	 */
 	function SaveNew(){
