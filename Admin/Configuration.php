@@ -364,6 +364,9 @@ class AdminSimpleBlogConfig extends SimipleBlogAdmin{
 		echo '</select>';
 	}
 
+	/**
+	 * @param string $name
+	 */
 	function Radio($name,$options,$current){
 
 		foreach($options as $value => $label){

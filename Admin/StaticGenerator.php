@@ -285,6 +285,8 @@ class StaticGenerator{
 	/**
 	 * Change relative links to absolute links
 	 *
+	 * @param string $server
+	 * @param integer $offset
 	 */
 	public static function FixLinks(&$content,$server,$offset){
 
