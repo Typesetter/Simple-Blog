@@ -3,7 +3,6 @@ defined('is_running') or die('Not an entry point...');
 
 class StaticGenerator{
 
-	static $months		= array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
 
 	/**
 	 * Regenerate all of the static content: gadget and feed
@@ -224,7 +223,7 @@ class StaticGenerator{
 		//get year counts
 		$archive = array();
 		foreach($list as $post_id => $time){
-			$ym = date('Ym',$time); //year&month
+			$ym = date('Y-m',$time); //year&month
 			$archive[$ym][] = $post_id;
 		}
 
@@ -234,8 +233,8 @@ class StaticGenerator{
 		$prev_year = false;
 		echo '<ul>';
 		foreach( $archive as $ym => $posts ){
-			$y = floor($ym/100);
-			$m = $ym%100;
+			$y = substr($ym,0,4);
+			$m = substr($ym,-2);
 			if( $y != $prev_year ){
 				if( $prev_year !== false ){
 					echo '</li>';
@@ -248,8 +247,12 @@ class StaticGenerator{
 				continue;
 			}
 
+
 			echo '<ul>';
-			echo '<li><a class="blog_gadget_link">'.self::$months[$m-1].' ('.$sum.')</a>';
+			echo '<li><a class="blog_gadget_link">';
+			$time = strtotime($ym.'-01');
+			echo strftime('%B',$time);
+			echo ' ('.$sum.')</a>';
 			echo '<ul class="simple_blog_category_posts nodisplay">';
 			foreach($posts as $post_id ){
 				$post_title = SimpleBlogCommon::AStrGet('titles',$post_id);
