@@ -57,7 +57,7 @@ class SimpleBlog extends SimpleBlogCommon{
 
 		if( common::LoggedIn() && !file_exists(self::$index_file) ){
 			echo '<p>Congratulations on successfully installing Simple Blog for gpEasy.</p> ';
-			echo '<p>You\'ll probably want to get started by '.common::Link('Special_Blog','creating a blog post','cmd=new_form').'.</p>';
+			echo '<p>You\'ll probably want to get started by '.common::Link('Admin_Blog','creating a blog post','cmd=new_form').'.</p>';
 		}
 
 	}
