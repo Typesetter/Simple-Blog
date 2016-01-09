@@ -813,14 +813,16 @@ class SimpleBlogCommon{
 	 */
 	public static function AStrGet( $data_string, $key){
 
+		$string =& SimpleBlogCommon::$data[$data_string];
+
 		//get position of current value
 		$prev_key_str	= '"'.$key.'>';
-		$offset			= strpos(SimpleBlogCommon::$data[$data_string],$prev_key_str);
+		$offset			= strpos($string,$prev_key_str);
 
 		if( $offset !== false ){
 			$offset		+= strlen($prev_key_str);
-			$length		= strpos(SimpleBlogCommon::$data[$data_string],'"',$offset) - $offset;
-			return substr(SimpleBlogCommon::$data[$data_string],$offset,$length);
+			$length		= strpos($string,'"',$offset) - $offset;
+			return substr($string,$offset,$length);
 		}
 
 		return false;
@@ -835,22 +837,23 @@ class SimpleBlogCommon{
 	 */
 	public static function AStrSet( $data_string, $key, $new_value){
 
+		$string =& SimpleBlogCommon::$data[$data_string];
 
 		//get position of current value
 		$prev_key_str	= '"'.$key.'>';
-		$offset			= strpos(SimpleBlogCommon::$data[$data_string],$prev_key_str);
+		$offset			= strpos($string,$prev_key_str);
 
 		//setting values
 		if( $offset === false ){
-			if( empty(SimpleBlogCommon::$data[$data_string]) ){
-				SimpleBlogCommon::$data[$data_string]	= '"';
+			if( empty($string) ){
+				$string	= '"';
 			}
-			$key										= str_replace(array('"','>'),'',$key);
-			SimpleBlogCommon::$data[$data_string]		.= $key.'>'.$new_value.'"';
+			$key		= str_replace(array('"','>'),'',$key);
+			$string		.= $key.'>'.$new_value.'"';
 		}else{
-			$offset										+= strlen($prev_key_str);
-			$length										= strpos(SimpleBlogCommon::$data[$data_string],'"',$offset) - $offset;
-			SimpleBlogCommon::$data[$data_string]		= substr_replace(SimpleBlogCommon::$data[$data_string],$new_value,$offset,$length);
+			$offset		+= strlen($prev_key_str);
+			$length		= strpos($string,'"',$offset) - $offset;
+			$string		= substr_replace($string,$new_value,$offset,$length);
 		}
 
 		return true;
