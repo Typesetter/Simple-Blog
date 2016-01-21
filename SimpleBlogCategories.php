@@ -48,8 +48,10 @@ class BlogCategories extends SimpleBlog{
 
 
 		$parts[1] = str_replace('_',' ',$parts[1]);
-		if (array_key_exists($parts[1],$this->categories)){
-		 return $parts[1];}
+		if( array_key_exists($parts[1],$this->categories) ){
+			return $parts[1];
+		}
+
 		return array_search($parts[1],$this->categories);
 	}
 
