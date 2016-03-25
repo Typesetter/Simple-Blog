@@ -127,7 +127,7 @@ class SimpleBlogCommon{
 	 * Get the user configuration and information about the current blog
 	 *
 	 */
-	public function GetBlogData(){
+	public static function GetBlogData(){
 
 		$blogData = array();
 		if( file_exists(self::$index_file) ){

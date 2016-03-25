@@ -253,7 +253,7 @@ class SimpleBlog extends SimpleBlogCommon{
 
 		echo '<div class="twysiwygr">';
 
-		if( SimpleBlogCommon::$data['abbrev_image'] ){
+		if( !empty(SimpleBlogCommon::$data['post_abbrev']) && SimpleBlogCommon::$data['abbrev_image']  ){
 			$this->GetImageFromPost($post['content']);
 		}
 
