@@ -531,7 +531,7 @@ class AdminSimpleBlogPosts extends SimipleBlogAdmin{
 		$_POST['pub_day']		= ($_POST['pub_day'] <= 0 )		? date('j') : $_POST['pub_day'];
 		$_POST['pub_hour']		= ($_POST['pub_hour'] > 23 )	? $_POST['pub_hour'] -24 : $_POST['pub_hour'];
 		$_POST['pub_min']		= ($_POST['pub_min'] > 59 ) ? $_POST['pub_min'] -60 : $_POST['pub_min'];
-		$_POST['time']			= gmmktime( $_POST['pub_hour'], $_POST['pub_min'], 0, $_POST['pub_month'], $_POST['pub_day'], $_POST['pub_year'] );
+		$_POST['time']			= mktime( $_POST['pub_hour'], $_POST['pub_min'], 0, $_POST['pub_month'], $_POST['pub_day'], $_POST['pub_year'] );
 	}
 
 
