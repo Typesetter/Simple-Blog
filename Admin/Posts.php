@@ -310,7 +310,7 @@ class AdminSimpleBlogPosts extends SimipleBlogAdmin{
 		echo '<label>';
 		echo '<input type="checkbox" name="isDraft" value="on" data-cmd="DraftCheckbox" ';
 		if( $array['isDraft'] ) echo 'checked="true"';
-		echo '" /> Draft</label>';
+		echo ' /> Draft</label>';
 		echo '</div>';
 
 		$this->FieldPublish($array);
