@@ -172,6 +172,7 @@ class StaticGenerator{
 		global $addonPathData;
 
 		$categories = SimpleBlogCommon::AStrToArray( 'categories' );
+		$post_drafts = SimpleBlogCommon::AStrToArray('drafts');
 
 		ob_start();
 		echo '<ul>';
@@ -183,7 +184,13 @@ class StaticGenerator{
 			}
 
 			$posts = SimpleBlogCommon::AStrToArray('category_posts_'.$catindex);
+			foreach($posts as $key => $post_id){
+				if( isset($post_drafts[$post_id]) ){
+				  unset($posts[$key]);
+				}
+			}
 			$sum = count($posts);
+			
 			if( !$sum ){
 				continue;
 			}
@@ -218,13 +225,16 @@ class StaticGenerator{
 
 		//get list of posts and times
 		$list = SimpleBlogCommon::AStrToArray( 'post_times' );
+		$post_drafts = SimpleBlogCommon::AStrToArray('drafts');
 		if( !count($list) ) return;
 
 		//get year counts
 		$archive = array();
 		foreach($list as $post_id => $time){
+		  if( !isset($post_drafts[$post_id]) ){
 			$ym = date('Y-m',$time); //year&month
 			$archive[$ym][] = $post_id;
+		  }
 		}
 
 
